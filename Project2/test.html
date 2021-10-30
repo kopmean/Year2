@@ -1,0 +1,346 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Prompt&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+
+
+</head>
+
+<style>
+    body {
+        background-color: black;
+    }
+
+    @keyframes fade-in {
+        0% {
+            opacity: 0
+        }
+
+        100% {
+            opacity: 1
+        }
+    }
+
+    @keyframes fade {
+        10% {
+            transform: scale(1, 1)
+        }
+
+        35% {
+            transform: scale(1, 1.7)
+        }
+
+        40% {
+            transform: scale(1, 1.7)
+        }
+
+        50% {
+            opacity: 1
+        }
+
+        60% {
+            transform: scale(1, 1)
+        }
+
+        100% {
+            transform: scale(1, 1);
+            opacity: 0
+        }
+    }
+
+    [data-language] code,
+    [class^="lang"] code,
+    pre [data-language],
+    pre [class^="lang"] {
+        opacity: 0;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+        animation: fade-in 50ms ease-in-out 2s forwards
+    }
+
+    [data-language] code.rainbow,
+    [class^="lang"] code.rainbow,
+    pre [data-language].rainbow,
+    pre [class^="lang"].rainbow {
+        animation: none;
+        transition: opacity 50ms ease-in-out
+    }
+
+    [data-language] code.loading,
+    [class^="lang"] code.loading,
+    pre [data-language].loading,
+    pre [class^="lang"].loading {
+        animation: none
+    }
+
+    [data-language] code.rainbow-show,
+    [class^="lang"] code.rainbow-show,
+    pre [data-language].rainbow-show,
+    pre [class^="lang"].rainbow-show {
+        opacity: 1
+    }
+
+    pre {
+        position: relative
+    }
+
+    pre.loading .preloader div {
+        animation-play-state: running
+    }
+
+    pre.loading .preloader div:nth-of-type(1) {
+        background: #0081f5;
+        animation: fade 1.5s 300ms linear infinite
+    }
+
+    pre.loading .preloader div:nth-of-type(2) {
+        background: #5000f5;
+        animation: fade 1.5s 438ms linear infinite
+    }
+
+    pre.loading .preloader div:nth-of-type(3) {
+        background: #9000f5;
+        animation: fade 1.5s 577ms linear infinite
+    }
+
+    pre.loading .preloader div:nth-of-type(4) {
+        background: #f50419;
+        animation: fade 1.5s 715ms linear infinite
+    }
+
+    pre.loading .preloader div:nth-of-type(5) {
+        background: #f57900;
+        animation: fade 1.5s 853ms linear infinite
+    }
+
+    pre.loading .preloader div:nth-of-type(6) {
+        background: #f5e600;
+        animation: fade 1.5s 992ms linear infinite
+    }
+
+    pre.loading .preloader div:nth-of-type(7) {
+        background: #00f50c;
+        animation: fade 1.5s 1130ms linear infinite
+    }
+
+    pre .preloader {
+        position: absolute;
+        top: 12px;
+        left: 10px
+    }
+
+    pre .preloader div {
+        width: 12px;
+        height: 12px;
+        border-radius: 4px;
+        display: inline-block;
+        margin-right: 4px;
+        opacity: 0;
+        animation-play-state: paused;
+        animation-fill-mode: forwards
+    }
+
+    pre {
+        background-color: #000;
+        word-wrap: break-word;
+        margin: 0px;
+        padding: 10px;
+        color: #fff;
+        font-size: 14px;
+        margin-bottom: 20px
+    }
+
+    pre,
+    code {
+        font-family: 'Monaco', 'Menlo', courier, monospace
+    }
+
+    pre {
+        background: #272822
+    }
+
+    pre .comment {
+        color: #75715E
+    }
+
+    pre .constant {
+        color: #AE81FF
+    }
+
+    pre .storage {
+        color: #66D9EF;
+        font-style: italic
+    }
+
+    pre .string,
+    pre .comment.docstring {
+        color: #E6DB74
+    }
+
+    pre .support.tag {
+        color: #fff
+    }
+
+    pre .keyword {
+        color: #F92672
+    }
+
+    pre .selector,
+    pre .storage.modifier.extends {
+        color: #F92672
+    }
+
+    pre .inherited-class {
+        font-style: italic
+    }
+
+    pre .operator,
+    pre .support.tag-name,
+    pre .entity.tag {
+        color: #F92672
+    }
+
+    pre .entity,
+    pre .support.attribute,
+    pre .entity.attribute {
+        color: #A6E22E
+    }
+
+    pre .entity.name.type,
+    pre .entity.name.struct {
+        color: #fff
+    }
+
+    pre .support,
+    pre *[data-language="c"] .function.call {
+        color: #66D9EF
+    }
+
+    pre .css-property,
+    pre .storage.function {
+        font-style: italic
+    }
+
+    pre .variable.global,
+    pre .variable.class,
+    pre .variable.instance {
+        color: #A6E22E
+    }
+
+    [data-language="html"] .support.operator,
+    .lang-html .support.operator,
+    .language-html .support.operator {
+        color: #fff
+    }
+
+    [data-language="javascript"] .variable.super,
+    .lang-javascript .variable.super,
+    .language-javascript .variable.super {
+        color: #66D9EF
+    }
+
+    [data-language="js"] .variable.super,
+    .lang-js .variable.super,
+    .language-js .variable.super {
+        color: #66D9EF
+    }
+
+    pre {
+        border-radius: 10px;
+    }
+
+
+    * {
+        font-family: 'Poppins', sans-serif;
+        font-family: 'Prompt', sans-serif;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <span>eiei ไงพวก</span>
+        <pre>
+        <code data-language="javascript">window.Rainbow = {
+            whatever: function(param) {
+        
+            },
+        
+            another: function(param) {
+        
+            }
+        };</code>
+        </pre>
+        <div class="swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slides -->
+                <div class="swiper-slide">Slide 1</div>
+                <div class="swiper-slide">Slide 2</div>
+                <div class="swiper-slide">Slide 3</div>
+                ...
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+            <!-- If we need scrollbar -->
+            <div class="swiper-scrollbar"></div>
+        </div>
+        <iframe src="https://discord.com/widget?id=808287219508576277&theme=dark" width="350" height="500"
+            allowtransparency="true" frameborder="0"
+            sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+    </div>
+
+    <script>
+        const swiper = new Swiper('.swiper', {
+            // Optional parameters
+            direction: 'vertical',
+            loop: true,
+
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            // And if we need scrollbar
+            scrollbar: {
+                el: '.swiper-scrollbar',
+            },
+        });
+    </script>
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script src="rainbow/rainbow.js"></script>
+    <script src="rainbow/generic.js"></script>
+    <script src="rainbow/javascript.js"></script>
+
+</body>
+
+</html>

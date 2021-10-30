@@ -1,0 +1,694 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>มารู้จัก javascript ES6 กัน</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Prompt&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+
+<style>
+    @keyframes fade-in {
+        0% {
+            opacity: 0
+        }
+
+        100% {
+            opacity: 1
+        }
+    }
+
+    @keyframes fade {
+        10% {
+            transform: scale(1, 1)
+        }
+
+        35% {
+            transform: scale(1, 1.7)
+        }
+
+        40% {
+            transform: scale(1, 1.7)
+        }
+
+        50% {
+            opacity: 1
+        }
+
+        60% {
+            transform: scale(1, 1)
+        }
+
+        100% {
+            transform: scale(1, 1);
+            opacity: 0
+        }
+    }
+
+    [data-language] code,
+    [class^="lang"] code,
+    pre [data-language],
+    pre [class^="lang"] {
+        opacity: 0;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+        animation: fade-in 50ms ease-in-out 2s forwards
+    }
+
+    [data-language] code.rainbow,
+    [class^="lang"] code.rainbow,
+    pre [data-language].rainbow,
+    pre [class^="lang"].rainbow {
+        animation: none;
+        transition: opacity 50ms ease-in-out
+    }
+
+    [data-language] code.loading,
+    [class^="lang"] code.loading,
+    pre [data-language].loading,
+    pre [class^="lang"].loading {
+        animation: none
+    }
+
+    [data-language] code.rainbow-show,
+    [class^="lang"] code.rainbow-show,
+    pre [data-language].rainbow-show,
+    pre [class^="lang"].rainbow-show {
+        opacity: 1
+    }
+
+    pre {
+        position: relative
+    }
+
+    pre.loading .preloader div {
+        animation-play-state: running
+    }
+
+    pre.loading .preloader div:nth-of-type(1) {
+        background: #0081f5;
+        animation: fade 1.5s 300ms linear infinite
+    }
+
+    pre.loading .preloader div:nth-of-type(2) {
+        background: #5000f5;
+        animation: fade 1.5s 438ms linear infinite
+    }
+
+    pre.loading .preloader div:nth-of-type(3) {
+        background: #9000f5;
+        animation: fade 1.5s 577ms linear infinite
+    }
+
+    pre.loading .preloader div:nth-of-type(4) {
+        background: #f50419;
+        animation: fade 1.5s 715ms linear infinite
+    }
+
+    pre.loading .preloader div:nth-of-type(5) {
+        background: #f57900;
+        animation: fade 1.5s 853ms linear infinite
+    }
+
+    pre.loading .preloader div:nth-of-type(6) {
+        background: #f5e600;
+        animation: fade 1.5s 992ms linear infinite
+    }
+
+    pre.loading .preloader div:nth-of-type(7) {
+        background: #00f50c;
+        animation: fade 1.5s 1130ms linear infinite
+    }
+
+    pre .preloader {
+        position: absolute;
+        top: 12px;
+        left: 10px
+    }
+
+    pre .preloader div {
+        width: 12px;
+        height: 12px;
+        border-radius: 4px;
+        display: inline-block;
+        margin-right: 4px;
+        opacity: 0;
+        animation-play-state: paused;
+        animation-fill-mode: forwards
+    }
+
+    pre {
+        background-color: #000;
+        word-wrap: break-word;
+        margin: 0px;
+        padding: 10px;
+        color: #fff;
+        font-size: 14px;
+        margin-bottom: 20px
+    }
+
+    pre,
+    code {
+        font-family: 'Monaco', 'Menlo', courier, monospace
+    }
+
+    pre {
+        background: #272822
+    }
+
+    pre .comment {
+        color: #75715E
+    }
+
+    pre .constant {
+        color: #AE81FF
+    }
+
+    pre .storage {
+        color: #66D9EF;
+        font-style: italic
+    }
+
+    pre .string,
+    pre .comment.docstring {
+        color: #E6DB74
+    }
+
+    pre .support.tag {
+        color: #fff
+    }
+
+    pre .keyword {
+        color: #F92672
+    }
+
+    pre .selector,
+    pre .storage.modifier.extends {
+        color: #F92672
+    }
+
+    pre .inherited-class {
+        font-style: italic
+    }
+
+    pre .operator,
+    pre .support.tag-name,
+    pre .entity.tag {
+        color: #F92672
+    }
+
+    pre .entity,
+    pre .support.attribute,
+    pre .entity.attribute {
+        color: #A6E22E
+    }
+
+    pre .entity.name.type,
+    pre .entity.name.struct {
+        color: #fff
+    }
+
+    pre .support,
+    pre *[data-language="c"] .function.call {
+        color: #66D9EF
+    }
+
+    pre .css-property,
+    pre .storage.function {
+        font-style: italic
+    }
+
+    pre .variable.global,
+    pre .variable.class,
+    pre .variable.instance {
+        color: #A6E22E
+    }
+
+    [data-language="html"] .support.operator,
+    .lang-html .support.operator,
+    .language-html .support.operator {
+        color: #fff
+    }
+
+    [data-language="javascript"] .variable.super,
+    .lang-javascript .variable.super,
+    .language-javascript .variable.super {
+        color: #66D9EF
+    }
+
+    [data-language="js"] .variable.super,
+    .lang-js .variable.super,
+    .language-js .variable.super {
+        color: #66D9EF
+    }
+
+    pre {
+        border-radius: 10px;
+        margin-top: 20px
+    }
+
+    ::selection {
+        color: #fff;
+        background-color: RGB(255, 208, 42);
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+
+    }
+
+    h3,
+    span,
+    b,
+    li {
+        font-family: 'Poppins', sans-serif;
+        font-family: 'Prompt', sans-serif;
+        /* padding: 10px; */
+    }
+
+    h3 {
+        padding-top: 50px;
+    }
+
+    span {
+        font-size: 20px;
+    }
+
+    body {
+        overflow-x: hidden;
+        background-color: #fff;
+        min-height: 100vh;
+
+    }
+
+
+    #header {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 30px 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 2;
+    }
+
+    #header .logo {
+        color: #094b65;
+        font-weight: 900;
+        font-size: 2em;
+        text-decoration: none;
+    }
+
+    #header ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #header ul li {
+        list-style: none;
+        margin-left: 20px;
+    }
+
+    #header ul li a {
+        text-decoration: none;
+        padding: 6px 15px;
+        color: #094b65;
+        border-radius: 20px;
+    }
+
+    #header ul li a:hover {
+        background: #094b65;
+        color: #fff
+    }
+
+    section {
+        position: relative;
+        width: 100%;
+        min-height: 52vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    a{
+        padding-top: 11px;
+    }
+</style>
+
+<body>
+    <header id="header">
+        <a href="#" class="logo">Sira</a>
+        <ul>
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Destination</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </header>
+
+    <div class="container">
+
+
+        <h2 class="mb-3"><b>มารู้จัก javascript ES6 กัน</b></h2>
+        <section><img src="Fundamentals-of-JavaScript-Part-2.png" alt="" style="width: 100%;"></section>
+
+
+        <div class="mt-3">
+            <span>ในปีที่ผ่านมา JavaScript นับเป็นภาษาที่ซ่าเอามากๆ Framework, Library ก็เยอะแยะไปหมดจนตามกันไม่ไหว
+                พอเริ่มขุดคุ้ยทำความเข้าใจกับ Framework แต่ละอัน เรามักจะได้ขอแถมเต็มไปหมดเลย
+                และผมเชื่อว่าหนึ่งในคำที่หลายๆ
+                คนมักจะเจอบ่อยมากๆ คือคำว่า <b>ES6</b> นี่แหละครับ<br>
+                วันนี้ก็เลยจะมาอธิบายว่า ES6 มันคืออะไรกัน และทำไมเราถึงต้องเขียน ES6 กันได้แล้ว<br><br>
+
+                ไม่พูดพร่ำทำเพลง ไปดูกันเลยดีกว่าว่า ES6 มันคืออะไรกันแน่
+                <br>
+            </span>
+        </div>
+
+
+        <div class="mt-3">
+            <h3><b>ES6 คือ?</b></h3>
+            <span>ES6 ย่อมาจาก ECMAScript 6 ครับ เป็นมาตรฐานของภาษา JavaScript ตัวใหม่ ที่ออกมาได้จะสองปีละ (ออกมาปี
+                2015) จุดที่น่าสนใจของ ES6 คือ เป็นการปรับปรุงตัวภาษาใหม่แบบยกเครื่องกันเลยทีเดียว
+                พร้อมเพิ่มฟีเจอร์ที่ช่วยให้ Developer ขอบตาดำอย่างเราๆ ท่านๆ สามารถเขียน JavaScript ได้โดยปวดหัวน้อยลง
+                และ syntax ดีงามมากขึ้น ซึ่งประเด็นที่มีคนเชียร์ให้เราเขียน ES6 มากขึ้น เพราะเขาสัญญาว่า ในเวอร์ชันถัดไป
+                (ES7 และ Beyond ไปกว่านั้น) จะปรับแก้ไม่ยกเครื่องขนาดนี้แล้ว จะเพิ่มฟีเจอร์เล็กๆ น้อยๆ แทน</span>
+        </div>
+
+
+        <h3><b>ตัวแปรทะลุบล็อก? let ช่วยท่านได้</b></h3>
+        <pre>
+            <code data-language="javascript">   
+    // ES5
+    var x = 3
+    if (x === 3) {
+        var y = 4
+        console.log('This is y:', y) // This is y inside: 4
+    }
+    console.log('This is y outside:', y) // This is y outside: 4</code>
+        </pre>
+
+        <span>ตัวแปรมันจะเกิดทะลุออกมาข้างนอกบล็อก if (ซึ่งหลายคนเคยเจอแบบนี้แล้วช็อคกันไปหลายที) แต่ใน ES6 เรามี let
+            ให้ท่านใช้แล้ว โดย let เป็นการประกาศตัวแปรโดย scope จะอยู่แค่ในบล็อกนั้นๆ</span>
+        <pre>
+            <code data-language="javascript">
+    // ES6
+    let x = 3
+    if (x === 3) {
+    let y = 4
+    console.log('This is y:', y) // This is y inside: 4
+    }
+    console.log('This is y outside:', y) // This is y outside: undefined
+            </code>
+        </pre>
+        <span>ซึ่งหลายๆ code guideline แนะนำให้ใช้ let แทน var กันหมดแล้ว ถ้าได้เขียน ES6</span>
+        <h3><b>ลาก่อน function()</b></h3>
+        <span>อีกสิ่งที่เปลี่ยนไปเยอะมากๆ คือใน ES6 นั้นเราสามารถประกาศฟังก์ชันโดยใช้ลูกศร => ได้แล้ว เราเรียกมันว่า
+            Arrow Function</span>
+        <pre>
+            <code data-language="javascript">
+    // ES5
+    var greeting = function(name) {
+        console.log('Hello ' + name)
+    }
+
+    var multiplyValue = function(a) {
+        return a * 2
+    }
+
+    var add = function(a, b) {
+        return a + b
+    }
+
+    var iHaveNoIdea = function(a, b) {
+        console.log('I have no idea what am I doing here')
+        return a * b
+    }
+
+    // ES6 Arrow Function
+
+    var greeting = name => {
+        console.log('Hello ' + name)
+    }
+
+    var multiplyValue = a => a * 2
+
+    var add = (a, b) => a + b
+
+    var iHaveNoIdea = (a, b) => {
+        console.log('I have no idea what am I doing here')
+        return a * b
+    }
+            </code>
+        </pre>
+        <span>
+            ซึ่ง Arrow Function นั้นมีจุดสังเกตคือ
+            <ul>
+                <li>ถ้ามี parameter เดียว ละเว้น ( ) ได้</li>
+                <li>ถ้าทำแค่ return ค่า ไม่จำเป็นต้องใช้คำว่า return แล้ว</li>
+            </ul>
+
+            และมีอีกจุดที่คิดว่าชีวิตหลายคนคงดีขึ้น คือ scope ของ this นั้นจะเป็น scope เดียวกันด้านนอกแล้วเมื่อใช้
+            arrow function
+        </span>
+        <span><br><br>จากแต่ก่อน</span>
+        <pre>
+            <code data-language="javascript">
+    // ES5
+    var self = this
+    this.nums.forEach(function(v) {
+        if (v % 5 === 0) self.fives.push(v)
+    })
+            </code>
+        </pre>
+        <span>มาเป็น</span>
+        <pre>
+            <code data-language="javascript">
+    // ES6
+    this.nums.forEach(v => {
+        if (v % 5 === 0) this.fives.push(v)
+    })
+            </code>
+        </pre>
+        <span>คงจะปวดหัวกับ scope this กันน้อยลงแล้ว</span>
+
+        <h3>พอกันที่กับการต่อสตริง Template String มาแล้ว</h3>
+        <span>เลิกนั่งต่อสตริงได้แล้วครับ เพราะ ES6 มี Template String แล้ว</span>
+        <pre>
+            <code data-language="javascript">
+    var name = 'John',
+        lastName = 'Cena'
+    // ES5 String concat
+    console.log('My name is ' + name + ' ' + lastName + '.')
+    // ES6 Template String
+    console.log(`My name is ${name} ${lastName}.`)
+            </code>
+        </pre>
+        <span>และ support multiline string ได้แล้วด้วย</span>
+        <pre>
+            <code data-language="javascript">
+    const str = `I can do this 
+        now.`
+
+            </code>
+        </pre>
+        <h3>Default, Rest, Spread parameter</h3>
+        <span>นอกจากนี้ยังเพิ่มฟีเจอร์ที่เกี่ยวกับพารามิเตอร์ในฟังก์ชันอีกด้วย เริ่มกันที่ Default Parameter ที่เราสามารถใส่ค่า default value ให้กับพารามิเตอร์บางตัวได้ หากไม่มีการส่งค่ามาให้ ก็จะใช้ค่า default นั้นเลย ซึ่งถ้าเป็นแต่ก่อนเราต้องดัก undefined value เองแล้วมาเซ็ตค่าให้มัน</span>
+        <pre>
+            <code data-language="javascript">
+    // ES6 Default Parameter
+    function addThreeValues(a, b = 2, c = 3) {
+    return a + b + c
+    }
+    f(1) // 6
+            </code>
+        </pre>
+        <span>ต่อมาคือ Rest Parameter ที่เราสามารถเขียนฟังก์ชันโดยหากมีการส่งพารามิเตอร์มาเกิน ก็จะรวมพารามิเตอร์ตัวที่เกินๆ เป็น array ก้อนเดียวให้</span>
+        <span><br><br>ดูโค้ดจะเข้าใจง่ายกว่า</span>
+        <pre>
+            <code data-language="javascript">
+    // ES6 Rest Parameter
+    function f(x, ...y) {
+        return x * y.length
+    }
+    f(3, 'hello', true, 2.2) // 9
+    // ฟังก์ชันด้านบน ตัวแปร y ในฟังก์ชันจะกลายเป็น ["hello", true, 2.2]
+            </code>
+        </pre>
+        <span>ส่วนสุดท้ายคือ Spread ครับ จริงๆ แล้ว Spread นั้นเป็น Operator ที่เราสามารถแจกแจงสมาชิกของตัวแปรได้ เช่น ถ้าเป็น array ก็สามารถแจงสมาชิกของ array ออกมาได้ หรือถ้าเป็น string ก็แจกแจงอักขระแต่ละตัวได้</span>
+        <pre>
+            <code data-language="javascript">
+    // ES6 Spread Operator
+    var params = ['John Cena', true, 7]
+    var other = [1, 2, ...params] // [1, 2, "John Cena", true, 7]
+
+    var str = 'foo'
+    var chars = [...str] // [ "f", "o", "o" ]
+            </code>
+        </pre>
+        <span>เรียกได้ Spread ช่วยให้เราลาขาดกับการวนลูปต่อ array หรือ split เอาอักขระแต่ละตัวจากสตริงมาได้เลย</span>
+        <h3><b>Object Destructuring</b></h3>
+        <span>อันนี้เท่ห์มากครับ (บางอันจะคล้าย Python พอตัว) เราสามารถ match ตัวแปรกับ array หรือ object เมื่อเรา assign ตัวแปรได้แล้วครับ</span>
+        <pre>
+            <code data-language="javascript">
+    // ES6 List Matching
+    var [a, , b] = [1, 2, 3]
+    console.log(a) // 1
+    console.log(b) // 3
+
+    // ES6 Object Matching
+    var coordinate = {
+    lat: 13.23456,
+    lng: 153.12307,
+    x: 200,
+    y: 117,
+    }
+    var { lat, lng } = coordinate
+    console.log(lat) // 13.23456
+    console.log(lng) // 153.12307
+            </code>
+        </pre>
+        <span>หรือบางที key ที่เราอยากจะ match อยู่ลึก หรือไม่อยากจะใช้ชื่อนั้นๆ เพราะไม่สื่อความ เราสามารถ reassign ชื่อตัวแปรให้ได้เลย</span>
+        <pre>
+            <code data-language="javascript">
+    var busPixelLocation = {
+        x: 200,
+        y: 117,
+        geo: {
+            lat: 13.23456,
+            lng: 153.12307
+        }
+    }
+    var { x: busXLocation, y: busYLocation, geo: { lat: busLat, lng: busLng } = coordinate;
+    console.log(busXLocation); // 200
+    console.log(busYLocation); // 117
+    console.log(busLat); // 13.23456
+    console.log(busLng); // 153.12307
+            
+            </code>
+        </pre>
+        <span>หรือถ้ากันพลาดว่ามันจะระเบิด เราก็ assign default ให้ได้</span>
+        <pre>
+            <code data-language="javascript">
+    // Fail-soft destructuring
+    var [a] = []
+    console.log(a) // undefined
+
+    // Fail-soft destructuring with default
+    var [a = 1] = []
+    console.log(a) // 1
+            </code>
+        </pre>
+        <span>และด้วยความที่เราทำ Object Destructuring ได้ ทำให้ในการเขียนฟังก์ชันเราก็ใช้ท่านี้ได้เหมือนกัน</span>
+        <h3>ES6 Modules</h3>
+        <span>จากแต่ก่อนเวลาเราจะใช้ modules อื่นๆ จะเขียนมาในแบบของ AMD หรือ CommonJS modules กันให้เรา require() ไปใช้ได้ แต่ใน ES6 เรามี syntax เกี่ยวกับการเขียนและเรียกใช้ module ใหม่หมดเลย โดยมี keyword คือ export กับ import</span>
+        <pre>
+            <code data-language="javascript">
+    // lib/math.js
+    export function sum(x, y) {
+        return x + y
+    }
+    export const PI = 3.141593
+    
+    // app.js
+    import * as math from 'lib/math'
+    console.log(`PI + 5 = ${math.sum(math.PI, 5)}`)
+    
+    //anotherApp.js
+    import { sum, PI } from 'lib/math'
+    console.log(`PI + 5 = ${sum(PI, 5)}`)
+            </code>
+        </pre>
+        <span>หรือเราจะ export ออกเป็น default ที่จะไม่มีการบังคับใช้ชื่อตัวแปรหรือฟังก์ชันนั้นในการเรียกแต่อย่างใด จะตั้งชื่ออะไรอยู่ที่คนเรียก</span>
+        <pre>
+            <code data-language="javascript">
+    // lib/mathplusplus.js
+    export * from 'lib/math' // Export อันเดิมออกไปอีกครั้ง
+    export const e = 2.71828182846
+    export default function(x) {
+    return Math.log(x)
+    }
+
+    // app.js
+    import ln, { sum, PI, e } from 'lib/mathplusplus'
+    console.log(`PI + log of e = ${sum(ln(e), PI)}`)
+            </code>
+        </pre>
+
+
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>company</h4>
+                    <ul>
+                        <li><a href="#">about us</a></li>
+                        <li><a href="#">our services</a></li>
+                        <li><a href="#">privacy policy</a></li>
+                        <li><a href="#">affiliate program</a></li>
+                    </ul>
+                </div>
+                <!-- <div class="footer-col">
+                    <h4>get help</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">shipping</a></li>
+                        <li><a href="#">returns</a></li>
+                        <li><a href="#">order status</a></li>
+                        <li><a href="#">payment options</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>online shop</h4>
+                    <ul>
+                        <li><a href="#">watch</a></li>
+                        <li><a href="#">bag</a></li>
+                        <li><a href="#">shoes</a></li>
+                        <li><a href="#">dress</a></li>
+                    </ul>
+                </div> -->
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/sira.attawanich/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/koppokung/"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-github-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </footer>
+ 
+
+    <script src="rainbow/rainbow.js"></script>
+    <script src="rainbow/generic.js"></script>
+    <script src="rainbow/javascript.js"></script>
+
+
+</body>
+
+</html>
